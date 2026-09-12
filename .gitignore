@@ -1,0 +1,6 @@
+# Le code source n'est pas versionné : seule l'archive installable est
+# distribuée, via les Releases GitHub.
+*
+!README.md
+!LICENSE
+!.gitignore
