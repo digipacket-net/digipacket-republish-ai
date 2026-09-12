@@ -1,28 +1,28 @@
 # Digipacket RePublish AI
 
-Extension WordPress qui réécrit automatiquement vos nouveaux articles avec l'IA Google Gemini (offre gratuite), puis les publie sur un second site WordPress via l'API REST — **en conservant les images à l'identique**.
+WordPress plugin that automatically rewrites your new posts with Google Gemini AI (free tier), then publishes them to a second WordPress site through the REST API — **keeping every image untouched**.
 
 [![Version](https://img.shields.io/badge/version-1.1.2-2271b1)](https://github.com/digipacket-net/digipacket-republish-ai/releases/latest)
 [![WordPress](https://img.shields.io/badge/WordPress-5.8%2B-21759b)](https://wordpress.org/)
 [![PHP](https://img.shields.io/badge/PHP-7.4%2B-777bb4)](https://www.php.net/)
-[![Licence](https://img.shields.io/badge/licence-GPL--2.0--or--later-green)](LICENSE)
+[![License](https://img.shields.io/badge/license-GPL--2.0--or--later-green)](LICENSE)
 
 ---
 
-## 📥 Téléchargement
+## 📥 Download
 
-**[⬇️ Télécharger la dernière version](https://github.com/digipacket-net/digipacket-republish-ai/releases/latest/download/digipacket-republish-ai.zip)**
+**[⬇️ Download the latest version](https://github.com/digipacket-net/digipacket-republish-ai/releases/latest/download/digipacket-republish-ai.zip)**
 
 ---
 
 ## 🚀 Installation
 
-### Méthode 1 — En SSH (recommandé)
+### Option 1 — Over SSH (recommended)
 
-Connectez-vous à votre serveur, puis :
+Connect to your server, then run:
 
 ```bash
-cd /chemin/vers/wordpress/wp-content/plugins
+cd /path/to/wordpress/wp-content/plugins
 
 wget https://github.com/digipacket-net/digipacket-republish-ai/releases/latest/download/digipacket-republish-ai.zip
 
@@ -30,85 +30,91 @@ unzip -o digipacket-republish-ai.zip
 rm digipacket-republish-ai.zip
 ```
 
-Activez ensuite l'extension depuis **Extensions** dans l'administration WordPress.
+Then activate the plugin from **Plugins** in your WordPress admin.
 
-> Si `wget` n'est pas disponible, utilisez `curl -L -O <url>`.
+> If `wget` is unavailable, use `curl -L -O <url>` instead.
 
-### Méthode 2 — En SSH avec WP-CLI
+### Option 2 — Over SSH with WP-CLI
 
-Une seule commande, activation comprise :
+A single command, activation included:
 
 ```bash
 wp plugin install https://github.com/digipacket-net/digipacket-republish-ai/releases/latest/download/digipacket-republish-ai.zip --activate
 ```
 
-### Méthode 3 — Depuis l'administration WordPress
+### Option 3 — From the WordPress admin
 
-1. Téléchargez le fichier `.zip` avec le lien ci-dessus.
-2. **Extensions → Ajouter → Téléverser une extension**.
-3. Sélectionnez le `.zip` → **Installer maintenant** → **Activer**.
+1. Download the `.zip` file using the link above.
+2. Go to **Plugins → Add New → Upload Plugin**.
+3. Select the `.zip` file → **Install Now** → **Activate**.
 
-### Mise à jour
+### Updating
 
-Reprenez la même commande : `unzip -o` écrase les anciens fichiers. Vos réglages et votre journal sont conservés.
-
----
-
-## ⚙️ Configuration en 5 minutes
-
-Cette extension s'installe sur **les deux sites**.
-
-### Sur le SITE B (destination) — à faire en premier
-
-1. **RePublish AI → Mode récepteur** → cocher **« Ce site est un site de destination »** → Enregistrer.
-2. **Utilisateurs → Profil → Mots de passe d'application** : créer un mot de passe nommé `Digipacket RePublish`, puis le copier.
-
-> Le site B doit être en **HTTPS**, sinon WordPress masque les mots de passe d'application.
-
-### Sur le SITE A (source)
-
-1. Obtenir une clé API Gemini gratuite sur **[Google AI Studio](https://aistudio.google.com/app/apikey)**.
-2. **RePublish AI → Intelligence artificielle** : coller la clé → Enregistrer → **Tester Google Gemini**.
-3. **RePublish AI → Site B (destination)** : URL, identifiant et mot de passe d'application → Enregistrer → **Tester le site B**.
-4. Commencer avec **Statut sur le site B : Brouillon** le temps de valider la qualité des réécritures.
+Run the same command again: `unzip -o` overwrites the old files. Your settings and activity log are preserved.
 
 ---
 
-## ✨ Fonctionnalités
+## ⚙️ Setup in 5 minutes
 
-- **Détection automatique** de chaque nouvel article publié.
-- **Réécriture par l'IA** : nouveau titre, nouvelle introduction, corps reformulé, métadonnées SEO et étiquettes.
-- **Images garanties intactes** — extraites et remplacées par des marqueurs avant l'envoi à l'IA, puis réinjectées à l'identique. L'IA ne voit jamais leur code et ne peut ni les altérer ni les perdre.
-- **Traitement asynchrone** : la publication n'est jamais ralentie.
-- **Réessais automatiques** en respectant le délai imposé par Google en cas de quota atteint.
-- **Catégories conservées** depuis le site d'origine, créées automatiquement si absentes.
-- **Multilingue** : la langue et l'alphabet d'origine sont conservés (arabe, français…), URL comprise. Peut aussi traduire.
-- **SEO** : compatible Yoast SEO, Rank Math, All in One SEO et SEOPress.
-- **Anti-boucle et anti-doublon** : un article reçu ne repart jamais, un article déjà envoyé est mis à jour.
-- **Journal complet** de chaque étape, avec durées et messages d'erreur.
+This plugin is installed on **both sites**.
+
+### On SITE B (destination) — do this first
+
+1. **RePublish AI → Receiver mode** → tick **"This site is a destination site"** → Save.
+2. **Users → Profile → Application Passwords**: create a password named `Digipacket RePublish`, then copy it.
+
+> Site B must run on **HTTPS**, otherwise WordPress hides application passwords.
+
+### On SITE A (source)
+
+1. Get a free Gemini API key from **[Google AI Studio](https://aistudio.google.com/app/apikey)**.
+2. **RePublish AI → Artificial intelligence**: paste the key → Save → **Test Google Gemini**.
+3. **RePublish AI → Site B (destination)**: URL, username and application password → Save → **Test site B**.
+4. Start with **Status on site B: Draft** while you review the quality of the rewrites.
 
 ---
 
-## 📋 Prérequis
+## ✨ Features
+
+- **Automatic detection** of every newly published post.
+- **AI rewriting**: new title, new introduction, reworded body, SEO metadata and tags.
+- **Images guaranteed intact** — extracted and replaced with placeholders before reaching the AI, then reinserted verbatim. The AI never sees their markup, so it cannot alter or lose them.
+- **Asynchronous processing**: publishing is never slowed down.
+- **Automatic retries** that honour the exact delay returned by Google when a quota is reached.
+- **Categories preserved** from the source site, created automatically when missing.
+- **Multilingual**: the original language and script are preserved (Arabic, French, …), including the URL slug. Can also translate.
+- **SEO**: works with Yoast SEO, Rank Math, All in One SEO and SEOPress.
+- **Loop and duplicate protection**: a received post never travels back, and an already-sent post is updated rather than duplicated.
+- **Full activity log** for every step, with timings and exact error messages.
+
+---
+
+## 📋 Requirements
 
 | | |
 |---|---|
-| WordPress | 5.8 ou supérieur |
-| PHP | 7.4 ou supérieur |
-| Site B | HTTPS, API REST accessible (`/wp-json/`) |
-| Compte site B | Rôle Éditeur ou Administrateur |
-| Clé API | Google Gemini — [offre gratuite](https://aistudio.google.com/app/apikey) |
+| WordPress | 5.8 or higher |
+| PHP | 7.4 or higher |
+| Site B | HTTPS, REST API reachable (`/wp-json/`) |
+| Site B account | Editor or Administrator role |
+| API key | Google Gemini — [free tier](https://aistudio.google.com/app/apikey) |
+
+---
+
+## 🌍 Interface language
+
+The plugin admin interface is currently in **French**. It is fully translation-ready (text domain `digipacket-republish-ai`, `/languages` folder), so it can be localised without touching the code.
 
 ---
 
 ## 🆘 Support
 
-Un problème, une question : **[digipacket.net/contact](https://digipacket.net/contact)**
+Questions or problems: **[digipacket.net/contact](https://digipacket.net/contact)**
 
-Joignez les lignes concernées de l'onglet **Journal** : elles contiennent le code HTTP et le message exact, ce qui permet un diagnostic immédiat.
+Please include the relevant lines from the **Log** tab — they carry the HTTP status code and the exact error message, which makes diagnosis immediate.
 
 ---
 
-## 📄 Licence
+## 📄 License
 
 GPL-2.0-or-later — © [Digipacket](https://digipacket.net)

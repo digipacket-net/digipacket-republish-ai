@@ -1,5 +1,5 @@
-# Le code source n'est pas versionné : seule l'archive installable est
-# distribuée, via les Releases GitHub.
+# Source code is not versioned here: only the installable archive is
+# distributed, through GitHub Releases.
 *
 !README.md
 !LICENSE
