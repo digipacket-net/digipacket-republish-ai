@@ -103,7 +103,11 @@ This plugin is installed on **both sites**.
 
 ## 🌍 Interface language
 
-The plugin admin interface is currently in **French**. It is fully translation-ready (text domain `digipacket-republish-ai`, `/languages` folder), so it can be localised without touching the code.
+The admin interface is in **English**, and a complete **French (`fr_FR`)** translation ships with the plugin.
+WordPress picks one automatically from your site locale — no setting to change.
+
+Translators can start from `languages/digipacket-republish-ai.pot` inside the plugin folder
+(text domain `digipacket-republish-ai`).
 
 ---
 
